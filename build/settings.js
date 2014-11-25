@@ -6,7 +6,7 @@ for(var i=0, len=localStorage.length; i<len; i++) {
 }
 
 try {
-var options = JSON.parse(decodeURIComponent(window.location.hash));
+var options = JSON.parse(decodeURIComponent(window.location.hash.substr(1)));
 } catch(e) {}
 
 React.render(
