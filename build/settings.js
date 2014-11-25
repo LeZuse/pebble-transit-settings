@@ -26,6 +26,14 @@ var Form = React.createClass({displayName: 'Form',
     this.state.options.journeys.push({name: '',form:'',to:''});
     this.forceUpdate()
   },
+  delJourney: function(i) {
+    self = this
+    return function(e) {
+      e.preventDefault();
+      self.state.options.journeys.splice(i, 1);
+      self.forceUpdate()
+    }
+  },
   onChange: function(i) {
     self = this
     return function(e) {
@@ -38,11 +46,12 @@ var Form = React.createClass({displayName: 'Form',
     return (
       React.createElement("form", null, 
         this.state.options.journeys.map(function(j, i){
-          return React.createElement("label", {key: i}, 
+          return React.createElement("div", {key: i}, 
             "Name ", React.createElement("input", {name: "name", type: "text", value: j.name, onChange: self.onChange(i)}), React.createElement("br", null), 
-            "From ", React.createElement("input", {name: "from", type: "text", value: j.from, onChange: self.onChange(i)}), 
-            "To ", React.createElement("input", {name: "to", type: "text", value: j.to, onChange: self.onChange(i)}), 
-            "Area ", React.createElement("input", {name: "location", type: "text", value: j.location, onChange: self.onChange(i)})
+            "From ", React.createElement("input", {name: "from", type: "text", value: j.from, onChange: self.onChange(i)}), React.createElement("br", null), 
+            "To ", React.createElement("input", {name: "to", type: "text", value: j.to, onChange: self.onChange(i)}), React.createElement("br", null), 
+            "Area ", React.createElement("input", {name: "location", type: "text", value: j.location, onChange: self.onChange(i)}), 
+            React.createElement("input", {type: "submit", value: "X", onClick: self.delJourney(i)}), React.createElement("hr", null)
           )
         }), 
         React.createElement("br", null), 

@@ -26,6 +26,14 @@ var Form = React.createClass({
     this.state.options.journeys.push({name: '',form:'',to:''});
     this.forceUpdate()
   },
+  delJourney: function(i) {
+    self = this
+    return function(e) {
+      e.preventDefault();
+      self.state.options.journeys.splice(i, 1);
+      self.forceUpdate()
+    }
+  },
   onChange: function(i) {
     self = this
     return function(e) {
@@ -38,12 +46,13 @@ var Form = React.createClass({
     return (
       <form>
         {this.state.options.journeys.map(function(j, i){
-          return <label key={i}>
+          return <div key={i}>
             Name <input name="name" type="text" value={j.name} onChange={self.onChange(i)} /><br />
-            From <input name="from" type="text" value={j.from} onChange={self.onChange(i)} />
-            To <input name="to" type="text" value={j.to} onChange={self.onChange(i)} />
+            From <input name="from" type="text" value={j.from} onChange={self.onChange(i)} /><br />
+            To <input name="to" type="text" value={j.to} onChange={self.onChange(i)} /><br />
             Area <input name="location" type="text" value={j.location} onChange={self.onChange(i)} />
-          </label>
+            <input type="submit" value="X" onClick={self.delJourney(i)} /><hr />
+          </div>
         })}
         <br />
         <input type="submit" value="Add" onClick={this.addJourney} />
