@@ -15,6 +15,7 @@ React.render(
     <div>LS items: {localStorage.length}</div>
     <div>{s}</div>
     <div>{options}</div>
+    {window.location.hash}
   </div>,
   document.getElementById('example')
 );

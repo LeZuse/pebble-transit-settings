@@ -14,7 +14,8 @@ React.render(
     React.createElement("h1", null, "Hello, world!"), 
     React.createElement("div", null, "LS items: ", localStorage.length), 
     React.createElement("div", null, s), 
-    React.createElement("div", null, options)
+    React.createElement("div", null, options), 
+    window.location.hash
   ),
   document.getElementById('example')
 );
