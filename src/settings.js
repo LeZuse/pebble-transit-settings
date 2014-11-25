@@ -14,7 +14,7 @@ React.render(
     <h1>Hello, world!</h1>
     <div>LS items: {localStorage.length}</div>
     <div>{s}</div>
-    <div>{options}</div>
+    <textarea>{JSON.stringify(options)}</textarea>
     {window.location.hash}
   </div>,
   document.getElementById('example')
