@@ -5,11 +5,16 @@ for(var i=0, len=localStorage.length; i<len; i++) {
   s += key +' '+value+'\n';
 }
 
+try {
+var options = JSON.parse(decodeURIComponent(window.location.hash));
+} catch(e) {}
+
 React.render(
   React.createElement("div", null, 
     React.createElement("h1", null, "Hello, world!"), 
     React.createElement("div", null, "LS items: ", localStorage.length), 
-    s
+    React.createElement("div", null, s), 
+    React.createElement("div", null, options)
   ),
   document.getElementById('example')
 );

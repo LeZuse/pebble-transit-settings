@@ -5,11 +5,16 @@ for(var i=0, len=localStorage.length; i<len; i++) {
   s += key +' '+value+'\n';
 }
 
+try {
+var options = JSON.parse(decodeURIComponent(window.location.hash));
+} catch(e) {}
+
 React.render(
   <div>
     <h1>Hello, world!</h1>
     <div>LS items: {localStorage.length}</div>
-    {s}
+    <div>{s}</div>
+    <div>{options}</div>
   </div>,
   document.getElementById('example')
 );
